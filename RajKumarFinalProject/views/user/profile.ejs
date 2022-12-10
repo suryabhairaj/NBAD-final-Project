@@ -1,0 +1,99 @@
+
+<%- include('../partials/header.ejs')%>
+<div class="content">
+    <div class="center-container mb-100">
+        <div class="event-heading">
+            <h3 class="dis-in-bl">My Commodities</h3>
+        </div>
+        <% if(commodities.length>0){ %>
+        <table>
+            <tr>
+              <th>Commodity</th>
+              <th>Category</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            <% commodities.forEach(commodity => { %>
+            <tr>
+                <td><a href="/commodities/<%= commodity.id %>"><%= commodity.name %></a></td>
+                
+                <td><%= commodity.category %></td>
+                <td><%= commodity.status%></td>
+                <% if(commodity.status=="Traded"){ %>
+                    <td><h3>This Commodity has been Traded</h3></td>
+                <%  }else{%>
+                    <td>
+                        <form >
+                            
+                            <button class="button update-btn" type="submit" formmethod="GET" formaction="/commodities/<%= commodity.id %>/edit">Edit</button>
+                            <button class="button delete-btn" type="submit" formmethod="POST" formaction="/commodities/<%= commodity.id %>?_method=DELETE">Delete</button>
+                            <% if(commodity.status=="Offer Pending"){ %>
+                                <button class="button manage-btn" type="submit" formmethod="POST"  formaction="/commodities/trade/manage/<%= commodity.id %>">Manage</button>
+                            <% } %>
+                        </form>
+                    </td>
+                <%  }%>
+                
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+            <p style="margin: 20px auto;width: 95%;">There are no commodity to display.</p>
+        <% } %> 
+        <div class="event-heading" style="margin-top: 50px;">
+            <h3 class="dis-in-bl">Your Trades</h3>
+        </div> 
+        <% if(myTrades.length>0){ %>
+        <table>
+            <tr>
+                <th>Commodity</th>
+                <th>Seller Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <% myTrades.forEach(trade => { %>
+            <tr>
+                <td><a href="/commodities/<%= trade.commodities.id %>"><%= trade.commodities.name %></a></td>
+                <td><%= trade.commodities.sellerName%></td>
+                <td><%= trade.commodities.status%></td>
+                <td>
+                    <form style="float: left;">
+                        <button class="button delete-btn" type="submit" formmethod="POST" formaction="/commodities/trade/<%= trade.id %>?_method=DELETE">No Longer Interested</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+            <p style="margin: 20px auto;width: 95%;">There are no commodity to display.</p>
+        <% } %>
+        <div class="event-heading" style="margin-top: 50px;">
+            <h3 class="dis-in-bl">People Interested in your Commodities:</h3>
+        </div> 
+        <% if(otherTrades.length>0){ %>
+        <table>
+            <tr>
+                <th>Commodity</th>
+                <th>Buyer's Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+            <% otherTrades.forEach(trade => { %>
+            <tr>
+                <td><a href="/commodities/<%= trade.commodities.id %>"><%= trade.commodities.name %></a></td>
+                <td><%= trade.attendees.firstName+" "+ trade.attendees.lastName%></td>
+                <td><%= trade.commodities.status%></td>
+                <td>
+                    <form style="float: left;">
+                        <button class="button delete-btn" type="submit" formmethod="POST" formaction="/commodities/trade/<%= trade.id %>?_method=DELETE">Cancel offer</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+            <p style="margin: 20px auto;width: 95%;">Your Products have not cought anyone's attentions untill now.</p>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/footer.ejs')%>

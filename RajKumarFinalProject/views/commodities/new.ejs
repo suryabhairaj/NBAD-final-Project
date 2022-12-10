@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container">
+        <form action = '/commodities' method = 'POST' class="mt-20">
+            <label for="category">Catagory</label>
+            <input type="text" id="category" name="category" placeholder="Enter Category" required>
+
+            <label for="name">Commodity Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter Commodity Name" required>
+
+            <!-- <label for="seller">Swapper's Name</label>
+            <input type="text" id="seller" name="seller" placeholder="Enter Swapper's Name" required> -->
+
+            <label for="details">Detail</label>
+            <textarea id="details" name="details" placeholder="Enter details of commodity" required minlength="10"></textarea>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="Enter location">
+        
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="image">Image URL</label>
+            <input type="url" id="image" name="image" placeholder="Enter image url" required>
+        
+            <button class="button submit-btn mb-100">Add Commodity</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

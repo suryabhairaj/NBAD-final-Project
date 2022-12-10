@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container">
+        <form action = '/commodities/<%= commodity.id%>?_method=PUT' method = 'POST' class="mt-20">
+            <label for="category">Category</label>
+            <input type="text" id="category" name="category" placeholder="Enter Category" value="<%= commodity.category %>">
+
+            <label for="name">Commodity Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter Commodity Name" value="<%= commodity.name %>">
+
+            <!-- <label for="seller">Swapper's Name</label>
+            <input type="text" id="seller" name="seller" placeholder="Enter Swapper's Name" value="<%= commodity.seller %>">  -->
+
+            <label for="details">Detail</label>
+            <textarea id="details" name="details" placeholder="Enter details of commodity"><%= commodity.details %></textarea>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="Enter location" value="<%= commodity.location %>">
+        
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" value="<%= commodity.date %>">
+
+            <label for="image">Image URL</label>
+            <input type="url" id="image" name="image" placeholder="Enter image url" value="<%= commodity.image %>">
+         
+            <button class="button submit-btn mb-100">Update Commodity</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>theTradeDesk</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <a href="/"><img class="logo" style="margin-top:10px; margin-left:40px" src="/images/logo.png" alt="Logo"></a>
+        <div class="header-right">
+            <ul>
+                <% if(!user){ %>
+                    <li><a href="/users/login">Login</a></li>
+                    <li><a href="/users/new">Signup</a></li>
+                <% } else { %>
+                    <li><a href="/commodities/new">Add a new Commodity</a></li>
+                    <li><a href='/users/profile'>Profile</a></li>
+                    <li><a href='/users/logout'>Logout</a></li>
+                <% } %>
+            </ul>
+        </div>
+        <hr class="header-seprator">
+        <ul>
+            <li><a href="/commodities">Commodities</a></li>
+            <% if(firstName && lastName){ %>
+                <div class="name-right">
+                    <ul>
+                        <li>Welcome <%= firstName+' '+lastName %></li>
+                    </ul>
+                </div>
+            <% } %>
+        </ul>
+    </div>
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
+    
+    <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+            <div class='success'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>

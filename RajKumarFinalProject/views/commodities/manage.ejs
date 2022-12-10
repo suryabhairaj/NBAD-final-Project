@@ -1,0 +1,50 @@
+<%- include('../partials/header.ejs') %>
+    <div class="content">
+        <div class="center-container mb-110">
+            <div class="wrapper">
+            <!-- <div style="width:800px;"> -->
+                   <div>
+                    <aside>
+                        
+                        <div id="card-view">
+                            
+                          <div id="list">
+                            <h2><%= match[0].name %></h2>
+                            <ul3> 
+                              <li3><p><a href="/commodities/<%= match[0]._id %>"><img id="manage-image" src="<%= match[0].image %>" alt="Logo"></a></p></li3>
+                              <li3><p>Name: <%= match[0].name%></p></li3>
+                              <li3><p>Category: <%= match[0].category%></p></li3>
+                              <li3><p>Seller: <%= match[0].sellerName%></p></li3>
+                              <li3><p>Location: <%= match[0].location%></p></li3>
+                              <li3><p>Status: <%= match[0].status%></p></li3>
+                              <li3><p>Date of Trade: <%= match[0].date%></p></li3>
+                            </ul3>
+                          </div>
+                        </div>
+                      </aside>
+                      <aside2>
+                        
+                        <div id="card-view">
+                            <h2><%= match[1].name %></h2>
+                          <div id="list">
+                            <ul3> 
+                                <li3><p><a href="/commodities/<%= match[1]._id %>"><img id="manage-image" src="<%= match[1  ].image %>" alt="Logo"></a></p></li3>
+                                <li3><p>Name: <%= match[1].name%></p></li3>
+                              <li3><p>Category: <%= match[1].category%></p></li3>
+                              <li3><p>Seller: <%= match[1].sellerName%></p></li3>
+                              <li3><p>Location: <%= match[1].location%></p></li3>
+                              <li3><p>Status: <%= match[1].status%></p></li3>
+                              <li3><p>Date of Trade: <%= match[1].date%></p></li3>
+                            </ul3>
+                          </div>
+                        </div>
+                      </aside2>
+                   </div>
+                    
+                    </div>
+                    <button class = "start-trading" onclick="location.href = '/commodities/trade/maketrade';">Make a Trade!!!</button>
+              </div>
+              <div style="clear: both;"></div>
+              <!-- </div> -->
+    </div>
+<%- include('../partials/footer.ejs') %>

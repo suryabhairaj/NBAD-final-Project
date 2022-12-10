@@ -1,0 +1,18 @@
+<%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container">
+        <form  action = '/users/login' method = 'POST' class="mt-20">
+            <label >Email Address</label>
+            <input class="input" type="email" id="email" name="email" class="fixed-width" required>
+            <!-- <label for="category">Catagory</label>
+            <input type="text" id="category" name="category" placeholder="Enter Category" required> -->
+
+
+            <label for="pass">Password</label>
+            <input class="input" type="password" id="password" name="password" class="fixed-width" required>
+
+            <button class="button submit-btn mb-100">Login</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

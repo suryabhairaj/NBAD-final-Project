@@ -1,0 +1,44 @@
+<%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container">
+        <div class="event-heading">
+            <h3 class="dis-in-bl"><%= commodity.name %></h3>
+        </div>
+        
+        <div class="wrapper">
+            <div class="event-image-div"><img class="mlr-50 event-image" src="<%= commodity.image %>" alt="Logo"></div>
+            <div class="detail">
+                <h4>Status: <%= commodity.status %></h4>
+                <h4>Swapper: <%= commodity.sellerName %></h4>
+                <p><%= commodity.date %></p>
+                <p><%= commodity.location %></p>
+            </div>
+            <div class="trade-wrapper">
+                <h4><%= tradeCount %> people are trading on this</h4>
+                <% if(user != commodity.seller._id && commodity.status!="Traded") { %>
+                <p>Make a trade!</p>
+                <form style="width: 100%;">
+                    <button class="button submit-btn" name="status" type="submit" formmethod="POST" value="Offer Pending" formaction="/commodities/<%= commodity._id %>/trade">Trade Now!</button>
+                </form>
+                <% } %>
+            </div>
+        </div>
+        <div class="description">
+            <h3>Details</h3>
+            <p><%= commodity.details %></p> 
+            <% if(b) {%>
+                <% if(commodity.status=="Traded"){ %>
+                    <h3>This Commodity has been Traded</h3>
+                <%  }else{%>
+                    <form >
+                        <button class="button update-btn" type="submit" formmethod="GET" formaction="/commodities/<%= commodity.id %>/edit">Edit</button>
+                        <button class="button delete-btn" type="submit" formmethod="POST" formaction="/commodities/<%= commodity.id %>?_method=DELETE">Delete</button>
+                    </form>
+                <%  }%>
+                
+            <%}%>
+            
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>
